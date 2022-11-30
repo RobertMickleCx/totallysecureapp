@@ -32,5 +32,5 @@ jobs:
             --client-id $CX_CLIENT_ID \
             --client-secret $CX_CLIENT_SECRET \
             --sast-incremental \
-            --sca-resolver ./ScaResolver-linux64/ScaResolver \
+            --sca-resolver /home/cxuser/project/ScaResolver \
             $ADDITIONAL_PARAMS

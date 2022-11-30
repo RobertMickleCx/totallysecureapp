@@ -28,4 +28,5 @@ jobs:
             --client-secret $CX_CLIENT_SECRET \
             --sast-incremental \
             --sca-resolver ../ScaResolver \
+            --scan-types sast,kics,sca \
             $ADDITIONAL_PARAMS

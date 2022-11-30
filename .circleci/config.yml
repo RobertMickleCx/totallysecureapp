@@ -17,8 +17,9 @@ jobs:
       - run:
           name: "Run Scan"
           command: |
-            ls
-            echo `pwd`
+            wget https://sca-downloads.s3.amazonaws.com/cli/latest/ScaResolver-linux64.tar.gz
+            tar -xzvf ScaResolver-linux64.tar.gz
+            rm -rf ScaResolver-linux64.tar.gz
             /app/bin/cx \
             scan create \
             -s . \
@@ -30,4 +31,5 @@ jobs:
             --client-id $CX_CLIENT_ID \
             --client-secret $CX_CLIENT_SECRET \
             --sast-incremental \
+            --sca-resolver ./ScaResolver-linux64/ScaResolver \
             $ADDITIONAL_PARAMS

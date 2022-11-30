@@ -17,10 +17,8 @@ jobs:
       - run:
           name: "Run Scan"
           command: |
-            
-            echo "haha"
-            echo "$CIRCLE_PROJECT_REPONAME $CIRCLE_BRANCH"
-            echo "cx: $CX_BASE_URI $CX_TENANT $CX_CLIENT_ID $ADDITIONAL_PARAMS"
+            ls
+            echo `pwd`
             /app/bin/cx \
             scan create \
             -s . \
@@ -31,4 +29,5 @@ jobs:
             --tenant $CX_TENANT \
             --client-id $CX_CLIENT_ID \
             --client-secret $CX_CLIENT_SECRET \
+            --sast-incremental \
             $ADDITIONAL_PARAMS

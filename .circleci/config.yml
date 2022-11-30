@@ -1,29 +1,18 @@
-#
-# Example job using the CLI image to run a CxAST scan
-#
-# Configuration through environment variables in CircleCI
-#
-# Documentation:
-# https://checkmarx.com/resource/documents/en/34965-68721-checkmarx-one-circleci-integration.html
-#
-
 version: 2
 jobs:
   build:
     docker:
-      - image: checkmarx/ast-cli
+      - image: cimg/base:2021.04
     steps:
-      - checkout
       - run:
           name: "Run Scan"
           command: |
             wget https://sca-downloads.s3.amazonaws.com/cli/latest/ScaResolver-linux64.tar.gz
             tar -xzvf ScaResolver-linux64.tar.gz
             rm -rf ScaResolver-linux64.tar.gz
-            echo Current Dir : `pwd`
-            ls -l Sca*
-            ./ScaResolver
-            /app/bin/cx \
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            /home/linuxbrew/.linuxbrew/bin/brew install checkmarx/ast-cli/ast-cli
+            /home/linuxbrew/.linuxbrew/Cellar/ast-cli/*/bin/cx \
             scan create \
             -s . \
             --agent CircleCI \
@@ -34,5 +23,5 @@ jobs:
             --client-id $CX_CLIENT_ID \
             --client-secret $CX_CLIENT_SECRET \
             --sast-incremental \
-            --sca-resolver /home/cxuser/project/ScaResolver \
+            --sca-resolver ./ScaResolver \
             $ADDITIONAL_PARAMS

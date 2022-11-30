@@ -20,7 +20,7 @@ jobs:
             
             echo "haha"
             echo "$CIRCLE_PROJECT_REPONAME $CIRCLE_BRANCH"
-            echo "cx: $BASE_URI $TENANT $CLIENT_ID $ADDITIONAL_PARAMS"
+            echo "cx: $CX_BASE_URI $CX_TENANT $CX_CLIENT_ID $ADDITIONAL_PARAMS"
             /app/bin/cx \
             scan create \
             -s . \

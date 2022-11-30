@@ -20,7 +20,9 @@ jobs:
             wget https://sca-downloads.s3.amazonaws.com/cli/latest/ScaResolver-linux64.tar.gz
             tar -xzvf ScaResolver-linux64.tar.gz
             rm -rf ScaResolver-linux64.tar.gz
+            echo Current Dir : `pwd`
             ls
+            find . -name ScaResolver
             /app/bin/cx \
             scan create \
             -s . \

@@ -22,6 +22,7 @@ jobs:
             rm -rf ScaResolver-linux64.tar.gz
             echo Current Dir : `pwd`
             ls -l ./Sca*
+            realpath ScaResolver
             find . -name ScaResolver
             /app/bin/cx \
             scan create \

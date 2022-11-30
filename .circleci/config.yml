@@ -24,6 +24,7 @@ jobs:
             ls -l ./Sca*
             realpath ScaResolver
             find . -name ScaResolver
+            chmod a+x ./ScaResolver
             /app/bin/cx \
             scan create \
             -s . \
